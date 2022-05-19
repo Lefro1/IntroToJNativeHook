@@ -1,4 +1,4 @@
-package Introduction;
+package Introduction.KeyboardListener;
 
 import com.github.kwhat.jnativehook.GlobalScreen;
 import com.github.kwhat.jnativehook.NativeHookException;
@@ -60,7 +60,7 @@ public class KeyboardListenerIntro implements NativeKeyListener {
     // This is consistent with the Java KeyEvent class.
     public void nativeKeyPressed(NativeKeyEvent nativeEvent) {
         // NOTE: Returned keyText is for individual keys, for example shift + 1 will show shift + 1, NOT ! even if ! is typed.
-        //System.out.println("KeyPressed: " + NativeKeyEvent.getKeyText(nativeEvent.getKeyCode()));
+        System.out.println("KeyPressed: " + NativeKeyEvent.getKeyText(nativeEvent.getKeyCode()));
     }
 
     @Override
@@ -73,9 +73,10 @@ public class KeyboardListenerIntro implements NativeKeyListener {
 
     @Override
     // The KeyTyped will have a RawCode and KeyChar, but NOT a KeyCode. This is consistent with the Java KeyEvent class.
+    // KeyChar will show what key was (or would have been) typed. For example, shift + 1 will return a char of '!'
     // This is consistent with the Java KeyEvent class.
     public void nativeKeyTyped(NativeKeyEvent nativeEvent) {
         // NOTE: Returned keyText is for individual keys, for example shift + 1 will show shift + 1, NOT ! even if ! is typed.
-        System.out.println("KeyTyped: " + nativeEvent.getKeyChar());
+        //System.out.println("KeyTyped: " + nativeEvent.getKeyChar());
     }
 }

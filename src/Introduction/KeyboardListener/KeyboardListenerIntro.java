@@ -7,18 +7,12 @@ import com.github.kwhat.jnativehook.keyboard.NativeKeyListener;
 
     // In order to "listen" to the keyboard activity, the class MUST implement NativeKeyListener.
     // It would be clean to have individual listeners (i.e. Keyboard, Mouse) dedicated to their own classes.
+    // In this example, an object of this class is implemented in the "Implementation" class.
 public class KeyboardListenerIntro implements NativeKeyListener {
-    // Remember to add the "libs" folder to your dependencies module.
-
-    public static void main(String[] args) {
-        // Creating an object of the class to call methods from a non-static context.
-        KeyboardListenerIntro keyboardIntro = new KeyboardListenerIntro();
-        keyboardIntro.startListener();
-    }
 
     // Helper method to start the keyboard listener.
     // This could instead be implemented inside a "main" method, but I like doing it this way.
-    private void startListener() {
+    public void startListener() {
         // Attempt to register the "NativeHook" that will monitor the keyboard.
         try {
             GlobalScreen.registerNativeHook();
@@ -46,7 +40,7 @@ public class KeyboardListenerIntro implements NativeKeyListener {
 
     // Just a useful method to know. Combining this with GlobalScreen.isNativeHookRegistered() will give the ability
     // To add a "stop key" to the listener, where if NativeKeyEvent is specificKey, the hook is unregistered (and stops listening).
-    private void stopListener() throws NativeHookException {
+    public void stopListener() throws NativeHookException {
         GlobalScreen.unregisterNativeHook();
     }
 
